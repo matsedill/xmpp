@@ -175,7 +175,7 @@ func (state *AuthedStream) Process(c *Connection, client *Client, s *Server) (St
 	switch v := val.(type) {
 	case *ClientIQ:
 		// TODO: actually validate that it's a bind request
-		if v.Bind.Resource == "" {
+		if v.Bind.Resource != "" {
 			client.resourcepart = makeResource()
 		} else {
 			s.Log.Error(errors.New("Invalid bind request").Error())
