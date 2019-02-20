@@ -39,10 +39,10 @@ type RosterExtension struct {
 func (e *RosterExtension) Process(message interface{}, from *Client) {
 	parsed, ok := message.(*ClientIQ)
 
-	fmt.Println("HELLO:::: ------> ", string(parsed.Query))
+	// fmt.Println("HELLO:::: ------> ", string(parsed.Query))
 
 	// handle things we need to handle
-	if ok && string(parsed.Query) == "<query xmlns='jabber:iq:roster'/>" {
+	if ok && string(parsed.Query) == "<query xmlns='jabber:iq:roster'></query>" {
 		// respond with roster
 		roster, _ := e.Accounts.OnlineRoster(from.jid)
 		msg := "<iq id='" + parsed.ID + "' to='" + parsed.From + "' type='result'><query xmlns='jabber:iq:roster' ver='ver7'>"
