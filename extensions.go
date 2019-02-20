@@ -40,7 +40,7 @@ func (e *RosterExtension) Process(message interface{}, from *Client) {
 	parsed, ok := message.(*ClientIQ)
 
 	// fmt.Println("HELLO:::: ------> ", string(parsed.Query))
-	fmt.Println("INSIDE ROSTER")
+	fmt.Println("INSIDE ROSTER", e.Accounts.Users)
 	// handle things we need to handle
 	if ok && string(parsed.Query) == "<query xmlns=\"jabber:iq:roster\"></query>" {
 		// respond with roster
