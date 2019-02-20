@@ -40,7 +40,7 @@ func (e *RosterExtension) Process(message interface{}, from *Client) {
 	parsed, ok := message.(*ClientIQ)
 
 	// handle things we need to handle
-	if ok && string(parsed.Query) == "<query xmlns=\"jabber:iq:roster\"></query>" {
+	if ok && string(parsed.Query) == "<query xmlns='jabber:iq:roster'></query>" {
 		// respond with roster
 		roster, _ := e.Accounts.OnlineRoster(from.jid)
 
